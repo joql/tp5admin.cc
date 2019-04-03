@@ -291,7 +291,7 @@ class Wechat extends Common{
             $res = $this->addWeixinMedia($title, 0, $type, $sort, $content);
             return $res;
         }
-        return view('addMedia');
+        return view('addmedia');
     }
 
     public function addWeixinMedia($title, $instance_id, $type, $sort, $content)
@@ -319,6 +319,9 @@ class Wechat extends Common{
                     $arr = explode('`|`', $v);
                     $this->addWeixinMediaItem($media_id, $arr[0], $arr[1], $arr[2], $arr[3], $arr[4], $arr[5], $arr[6], 0);
                 }
+            }else if($type == 4){
+                $pic_media_id = $this->app->material->uploadImage(\think\facade\Env::get('root_path')."/public".$content);
+                $this->addWeixinMediaItem($media_id, $title, '', '', '', '', $pic_media_id['media_id'], '', 0);
             }
             $wx_media->commit();
             return ['code'=>1,'message'=>'添加成功！','url'=>url('menu')];
@@ -435,6 +438,11 @@ class Wechat extends Common{
                 'url' => url('materialmessage',['type'=>3]),
                 'menu_name' => "多图文",
                 "active" => $type == 3 ? 1 : 0
+            ),
+            array(
+                'url' => url('materialmessage',['type'=>4]),
+                'menu_name' => "图片",
+                "active" => $type == 4 ? 1 : 0
             )
         );
 

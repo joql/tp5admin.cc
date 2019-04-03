@@ -47,6 +47,7 @@
                     <label class="check-box"><input type="radio" name="type" id="type1" value="1">文本</label>
                     <label class="check-box"><input type="radio" name="type" id="type2" value="2">单图文</label>
                     <label class="check-box"><input type="radio" name="type" id="type3" value="3"  checked>多图文</label>
+                    <label class="check-box"><input type="radio" name="type" id="type4" value="4">图片</label>
                 </dd>
             </dl>
         </div>
@@ -207,6 +208,42 @@
                 <input class="layui-input" type="text" id="form_content_source_url" value="" onchange="changeElement('content_source_url')">
             </div>
         </div>
+        <div class="set-style type4" style="display: none;">
+            <dl>
+                <dt>描述:</dt>
+                <dd>
+                    <p>
+                        <textarea id="type4_desc" class="layui-textarea"></textarea>
+                    </p>
+                    <p class="error">请输入模块描述</p>
+                </dd>
+                <dt>图片:</dt>
+                <dd>
+                    <div>
+                        <div class="class-logo" style="background: #f8f8f8;">
+                            <p style="width: 270px; height: 150px;">
+                                <img id="imgtype4-Logo" src="" style="max-width:270px;max-height:150px;">
+                            </p>
+                        </div>
+                        <p class="hint">
+                            <span style="color: orange;">建议使用宽900像素-高500像素的图片。</span>
+                        </p>
+                        <input type="hidden" id="type4-img-hidden" value=""/>
+                        <div class="ncsc-upload-btn">
+                            <a href="javascript:void(0);">
+                            <span>
+                                <input hidefocus="true" size="1" class="input-file" name="file_upload" id="uploadOneImg" nc_type="change_store_label" type="file" onchange="imgUpload(this, 'type4-img', 'type4-img-hidden');">
+                                <input type="hidden" id="type4-Logo" value=""/>
+                            </span>
+                                <p>
+                                    <i class="fa fa-upload"></i>上传图片
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+        </div>
         <div style="width:200px;margin:20px auto;">
             <button class="edit_button layui-btn" onclick="save();">提交</button>
         </div>
@@ -347,6 +384,14 @@
                 contents = contents +'`$`'+ content_new;
             }
             contents = contents.substring(3);
+        }else if(type == 4){
+            //文本提交
+            var title = $("#type4_desc").val() ;
+            var contents = $("#type4-Logo").val();
+            if(title == ''){
+                showMessage('error', '内容不能为空');
+                return false;
+            }
         }else{
             showMessage('error', '请选择消息类型');
             return false;
@@ -476,6 +521,7 @@
         $(".type1").hide();
         $(".type2").hide();
         $(".type3").hide();
+        $(".type4").hide();
         $(".type"+type).show();
     });
     var ue = UE.getEditor('editor',{scaleEnabled:false});

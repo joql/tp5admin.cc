@@ -6,6 +6,7 @@
 
 namespace app\wchat\controller;
 use EasyWeChat\Factory;
+use EasyWeChat\Kernel\Messages\Image;
 use EasyWeChat\Kernel\Messages\News;
 use EasyWeChat\Kernel\Messages\NewsItem;
 use EasyWeChat\Kernel\Messages\Text;
@@ -210,6 +211,10 @@ class Wchat extends Controller
                     ]);
                 }
                 $contentStr = new News($items);
+                break;
+            case '4':
+                //图片消息
+                $contentStr = new Image($media_info['item_list'][0]['content']);
                 break;
             default:
                 $contentStr = "";
