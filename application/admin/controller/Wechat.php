@@ -56,7 +56,7 @@ class Wechat extends Common{
         $call_back_url = $domain_name.'/wchat/wchat/relateWeixin';
         $this->assign("url", $url_top);
         $this->assign("call_back_url", $call_back_url);
-        $this->assign('wchat_config', $wchat_config["value"]);
+        $this->assign('wchat_config', $wchat_config);
         $this->assign('title', '微信账户设置');
         return $this->fetch();
     }
