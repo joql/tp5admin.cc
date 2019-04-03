@@ -35,7 +35,7 @@ class Wechat extends Common{
     public function config()
     {
         $info = $this->wx_config;
-        if (empty($info['value'])) {
+        if (empty($info)) {
             $info= array(
                 'value' => array(
                     'appid' => '',
@@ -44,8 +44,6 @@ class Wechat extends Common{
                 ),
                 'is_use' => 1
             );
-        } else {
-            $info['value'] = json_decode($info['value'], true);
         }
         $wchat_config = $info;
         // 获取当前域名
