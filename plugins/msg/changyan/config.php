@@ -4,7 +4,7 @@ return array(
     'code'=> 'changyan',
     'name' => '畅言评论',
     'version' => '1.0',
-    'author' => 'CLTPHP',
+    'author' => 'phpadmin',
     'desc' => '畅言评论插件 ',
     'icon' => 'logo.png',
     'config' => array(

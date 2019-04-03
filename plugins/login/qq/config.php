@@ -4,7 +4,7 @@ return array(
     'code'=> 'qq',
     'name' => 'QQ登陆',
     'version' => '1.0',
-    'author' => 'CLTPHP',
+    'author' => 'phpadmin',
     'desc' => 'QQ登陆插件 ',
     'icon' => 'logo.png',
     'config' => array(
