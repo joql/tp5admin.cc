@@ -24,7 +24,7 @@ class Wchat extends Controller
         //实例化easywechat类
         $config = [
             'app_id' => $this->config['appid'],
-            'secret' => $this->config['secret'],
+            'secret' => $this->config['appsecret'],
             'token' => $this->config['token'],
             'response_type' => 'array',
             'log' => [
